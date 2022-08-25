@@ -19,9 +19,17 @@ function getCookie(name) {
     'use strict';
 
     // devtools -> element -> copy as selector
-    let usernameElement = document.querySelector("#nav-usernameMenu > span.OYUiy2c-Bv3l4eRDVvfYu > span._1Vtx1Z7gxtNZJP2MVzVCLO._31GHADTBDW3BW3qVhZRFPq");
-    let userInfo = JSON.parse(decodeURIComponent(getCookie("aws-userInfo")))
+    // method 1, element query
+    let usernameElement = document.querySelector("#nav-usernameMenu > span.OYUiy2c-Bv3l4eRDVvfYu > span._1Vtx1Z7gxtNZJP2MVzVCLO._31GHADTBDW3BW3qVhZRFPq").title;
+    
+    // devtools -> application -> cookies
+    // method 2, aws-userinfo cookie
+    let usernameCookie = JSON.parse(decodeURIComponent(getCookie("aws-userInfo"))).username
 
-    console.log(usernameElement.title)
-    console.log(userInfo)
+    alert(`
+        Method 1: element query
+        ${usernameElement}
+        Method 2: cookies
+        ${usernameCookie}
+    `);
 })();
